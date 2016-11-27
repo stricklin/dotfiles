@@ -1,0 +1,7 @@
+[user]
+	name = Rubin Stricklin
+	email = rubin2@pdx.edu
+[core]
+	editor = vim
+[color]
+	ui = always
