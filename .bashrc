@@ -1,6 +1,6 @@
 alias aliasList='grep alias ~/.bashrc | less'
 alias bashsource='source ~/.bashrc'
-alias gcap= 'git add -A && git commit -m "." && git push'
+alias gcap='git add -A && git commit -m "." && git push'
 
 
 
