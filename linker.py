@@ -5,8 +5,8 @@ import os
 
 home = os.path.expanduser('~')
 pwd  = os.path.dirname(__file__)
-symlinks = [".vimrc", ".bashrc"]
-hardlinks= [".gitconfig"]
+symlinks = [".vimrc"]
+hardlinks= [".gitconfig", ".bashrc"]
 for symlink in symlinks:
 	dest = home + '/' + symlink
 	src  = pwd  + '/' + symlink
