@@ -1,207 +1,125 @@
-
-call plug#begin('~/.vim/plugged')
-
-" A plugin to deal with things that surround other things - html tags,
-" parentheses, quotes, etc.
-"Plug 'tpope/vim-surround'
-
-" A plugin that lets you use % to jump between more than just parentheses
-" and brackets (uses the syntax files to intelligently guess what to match
-" for things like html tags)
-"Plug 'tmhedberg/matchit'
-
-" Snazzy, lightweight statusline to replace the default
+" plugin stuff
+call plug#begin('~/.local/share/nvim/plugged')
+"Plug 'jebberjeb/clojure-socketrepl.nvim'
+Plug 'scrooloose/syntastic'
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'w0rp/ale'
 Plug 'bling/vim-airline'
-
-" Snippets to output oft-written blocks of code for you
-"Plug 'Shougo/neosnippet.vim'
-
-" Have vim check your files for syntax errors
-"Plug 'scrooloose/syntastic'
-
-" Comment out passages with a key command instead of manually - there are lots
-" of plugins that do this - this one is my favorite
-"Plug 'scrooloose/nerdcommenter'
-
-" Show git status to the left of the line number
-"Plug 'mhinz/vim-signify'
-
-" Control git from inside vim
-"Plug 'tpope/vim-fugitive'
-
-" Show a tree menu of the files in your current directory to the left of your
-" editor (like you get in most IDEs).
-
-"Plug 'scrooloose/nerdtree'
-" Search through files inside nerdtree with ack
-"Plug 'vim-scripts/nerdtree-ack'
-
-" Duplicate nerdtree across all tabs (a behavior you'd expect to be default
-" coming from IDEs)
-
-"Plug 'jistr/vim-nerdtree-tabs'
-"Auto completers
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-
+Plug 'mhinz/vim-signify'
 call plug#end()
 
-"Things needed to make vim work like it should:
-"This is not vi:
-set nocompatible
-"Use syntax:
-syntax enable
-"Don't go into command mode:
-nnoremap Q <nop>
-nnoremap q: <nop>
-" Set charset to UTF-8
-set encoding=utf-8
-scriptencoding utf-8
-"make backspace work like it should:
-set backspace=indent,eol,start
-" Make Y yank to the end of the current line:
-nnoremap Y y$
-"Use C^h,j,k,l to move between windows:	
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-"Dont tab complete for these files:
-set wildignore+=*.o,*.out,*.obj,*.rbc,*.rbo,*.class,*.gem,*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.jpg,*.png,*.gif,*.jpeg,*.bmp,*.tif,*.tiff,*.psd,*.hg,*.git,*.svn,*.exe,*.dll,*.pyc,*.DS_Store
-"Don't make swapfiles:
-set noswapfile
-set nobackup
-set nowritebackup
-"Make new lines have the right indentation
-set autoindent
-set smartindent
-" Treat long lines as break lines 
-map j gj
-map k gk
-" Always show the status line
-set laststatus=3
+" nerdtree config
+"
+autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-"Make searching work better:
-"Make searching sweet:
-set ignorecase
-set smartcase
-set incsearch
-"Make highlights work on searches and brackets:
-set hlsearch
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-set showmatch
-"makes the current search result always appear in the middle of the screen:
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
+" Set colorscheme
+colorscheme elflord
 
-"Key mappings:
-"These are to kill the arrow keys and F1 help
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-noremap   <F1>     <NOP>
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-"set leader
-let mapleader = " "
-" Use F2 to toggle paste mode instead of having to type ':set paste'
-set pastetoggle=<F2>
+" set true colors
+set termguicolors
+" Sets how many lines of history VIM has to remember
+set history=9999
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
 
-" Make sure there are at least two lines of padding above and below your
-" cursor. This causes the window to scroll when you get within close two lines
-" of the bottom of the screen.
-set scrolloff=3
-" Also keep two columns to the left and right when scrolling horizontally
-set sidescrolloff=3
+" Set to auto read when a file is changed from the outside
+set autoread
 
-" When you indent or de-indent something in visual mode, the default is to
-" immediately un-select the text when finished. This mapping maintains the
-" selection even after indenting or de-indenting.
-vnoremap < <gv
-vnoremap > >gv
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
 
-" I like to map the right and left arrow keys to go to the previous and next
-" buffers while in normal mode.
-nnoremap <left> :bprev<CR>
-nnoremap <right> :bnext<CR>
+" Fast saving
+nmap <leader>w :w!<cr>
 
-" Auto-reload your vimrc whenever you write to it:
-augroup reload_vimrc " {
-	autocmd!
-	autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
 
-" Fill in the 80th column with a solid color, to let you know when you're
-" getting close to your wrap limit
-set colorcolumn=80
-" The colorcolumn can get aesthetically obnoxious though - I like to make it
-" light black to keep it unobtrusive:
-highlight ColorColumn ctermbg=7
-
-" If we have a sufficient version of vim, we can use a persistennt undo
-" file. This lets the undo history for a file persist between editing sessions
-if v:version >= 703
-        set undofile
-        set undodir=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
-endif
-
-"Set relative number
-"set relativenumber
-set number
-
-" Show a bottom bar that lets you see what you're typing as you enter commands
-set showcmd
-
-" Show current position in vile (perecntage scrolled) and current line and
-" column
-set ruler
-
-" Sometimes vim will ues the system bell to beep at you. Don't let it.
-set noerrorbells
-set t_vb=
-" Vim can use a visual bell instead. I'm allowing it here - you can set this
-" to novisualbell instead to disallow it.
-set visualbell
-
-" Store lots of undo information
-set undolevels=1000
-
-" Remember more command and search history
-set history=1000
-
-" Did you make some edits to a file you don't own, only to realize once you
-" try to save that you don't have permission to write to it? If you have
-" root, this command will let you type :w!! to enter your password and write
-" the file.
-cmap w!! w !sudo tee % >/dev/null
-
-" When you tab-complete a vim command at the bottom of the screen, make vim pop " up a little menu to show all your completion options at once, instead of only " the current one
+" Turn on the Wild menu
 set wildmenu
 
-" Ignore case when tab completing vim commands
-set wildignorecase
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
 
-" This line further configures the 'wildmenu' option. You can consult :help
-" wildmode for more on the options available, but here's an example. This means
-" that the first time you press tab to complete a vim command, the wildmenu
-" will just pop up and show your options, not selecting anything for you yet.
-" The next time you press tab, it will start cycling through the options.
-set wildmode=list:full
+"Always show current position
+set ruler
 
-" Ignore case when tab-completing filenames
-set wildignorecase
+" Height of the command bar
+set cmdheight=2
 
-" Fairy dust to make vim work faster over a laggy connection
-set ttyfast
+" A buffer becomes hidden when it is abandoned
+set hid
 
-"Turn on the pretty colors
-colorscheme elflord
-"colorsheme desert
-set background=dark
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" Set number line
+set number
+
+" Enable syntax highlighting
+syntax enable
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
 
 "Make tabs sweet
 set expandtab
@@ -215,6 +133,21 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
 
-" Remember info about open buffers on close
-set viminfo^=%
+" => Turn persistent undo on
+"    means that you can undo even when you close a buffer/VIM
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+" When you tab-complete a vim command at the bottom of the screen, make vim pop
+" up a little menu to show all your completion options at once, instead of only
+" the current one
+set wildmenu
+
+" Ignore case when tab completing vim commands
+set wildignorecase
