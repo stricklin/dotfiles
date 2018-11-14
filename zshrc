@@ -60,6 +60,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  zsh-syntax-highlighting
+  history-substring-search
+  #kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,13 +108,6 @@ function vi_mode_prompt_info() {
 #RPS1='$(vi_mode_prompt_info)'
 #RPS2=$RPS1
 
-# make history searching sweet
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source zsh-syntax-highlighting.zsh
-source zsh-history-substring-search.zsh
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # work proxy stuff
 
 containsElement () {
@@ -120,30 +116,43 @@ containsElement () {
   return 1
 }
  
-REGENCE_PROXY="http://utrgproxywest.regence.com:8080"
-DO_NOT_PROXY="localhost,127.0.0.1,localaddress,.localdomain.com,*.healthsparq.com,*.regence.com,*.healthsparq.net"
-REGENCE_EXT_IP=("199.79.222.119")
-external_ip="$(curl -s http://ipinfo.io/ip)"
-#Location-specific settings
-if containsElement "${external_ip}" "${REGENCE_EXT_IP[@]}"; then
-    export HTTP_PROXY="${REGENCE_PROXY}"
-    export http_proxy="${REGENCE_PROXY}"
-    export https_proxy="${REGENCE_PROXY}"
-    export HTTPS_proxy="${REGENCE_PROXY}"
-    export ftp_proxy="${REGENCE_PROXY}"
-    export FTP_PROXY="${REGENCE_PROXY}"
-    export no_proxy="${DO_NOT_PROXY}"
-    export NO_PROXY="${DO_NOT_PROXY}"
-else
-    unset http_proxy
-    unset HTTP_PROXY
-    unset https_proxy
-    unset HTTPS_PROXY
-    unset ftp_proxy
-    unset FTP_PROXY
-    unset no_proxy
-    unset NO_PROXY
-fi
+#REGENCE_PROXY="http://utrgproxywest.regence.com:8080"
+#DO_NOT_PROXY="localhost,127.0.0.1,localaddress,.localdomain.com,*.healthsparq.com,*.regence.com,*.healthsparq.net"
+#REGENCE_EXT_IP=("199.79.222.119")
+#external_ip="$(curl -s http://ipinfo.io/ip)"
+##Location-specific settings
+#if containsElement "${external_ip}" "${REGENCE_EXT_IP[@]}"; then
+    #export HTTP_PROXY="${REGENCE_PROXY}"
+    #export http_proxy="${REGENCE_PROXY}"
+    #export https_proxy="${REGENCE_PROXY}"
+    #export HTTPS_proxy="${REGENCE_PROXY}"
+    #export ftp_proxy="${REGENCE_PROXY}"
+    #export FTP_PROXY="${REGENCE_PROXY}"
+    #export no_proxy="${DO_NOT_PROXY}"
+    #export NO_PROXY="${DO_NOT_PROXY}"
+#else
+    #unset http_proxy
+    #unset HTTP_PROXY
+    #unset https_proxy
+    #unset HTTPS_PROXY
+    #unset ftp_proxy
+    #unset FTP_PROXY
+    #unset no_proxy
+    #unset NO_PROXY
+#fi
+
+# Enviroment variables needed for MacPorts
+export PATH=/Users/r633474/Library/Python/3.7/bin:/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
+
+# Set JAVA_HOME
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+
+# Set Path
+export PATH="/usr/local/sbin:$PATH"
+
+# Set config dir
+CONFIG_DIR = "~./dotfiles"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -151,15 +160,17 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc && source ~/.zshrc"
+alias gs='git status'
+alias ga='git add -A'
+alias gc='ga && git commit -m'
+alias gp='gc "auto commit" && git push'
+alias zshconfig="cd $CONFIG_DIR && nvim ./zshrc && source ./zshrc && gp"
+#TODO THIS IS WHERE YOU LEFT OFF
 alias ohmyzsh="nvim ~/.oh-my-zsh && source ~/.oh-my-zsh"
 alias nvimconfig="nvim ~/.config/nvim/init.vim && source ~./config/nvim/init.vim"
 alias todo="nvim ~/work_journal/current"
 alias tolearn="nvim ~/learning_journal/current"
+alias pwa="nvim ~/pwa/notes"
+alias scratch='nvim ~/scratch/`date +"%Y-%m-%d`.txt'
 alias gi='gi() { for arg in $@; do echo $arg >> ./.gitignore; done }; gi'
-export PATH="/usr/local/sbin:$PATH"
-
-# config git
-git config --global user.name "rubin stricklin"
-git config --global user.email rubin.stricklin@healthsparq.com
 
