@@ -152,7 +152,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 export PATH="/usr/local/sbin:$PATH"
 
 # Set config dir
-CONFIG_DIR = "~./dotfiles"
+export CONFIG_DIR="~/dotfiles"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
