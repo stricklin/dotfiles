@@ -164,8 +164,8 @@ alias gs='git status'
 alias ga='git add -A'
 alias gc='ga && git commit -m'
 alias gp='gc "auto commit" && git push'
-alias zshconfig="cd $CONFIG_DIR && nvim ./zshrc && source ./zshrc && gp"
-#TODO THIS IS WHERE YOU LEFT OFF
+alias zshconfig="cd $CONFIG_DIR && nvim ./zshrc && source ./zshrc && gp && cp ./zshrc ~/.zshrc"
+#TODO THIS IS WHERE YOU LEFT OFF, this line ^ needs work
 alias ohmyzsh="nvim ~/.oh-my-zsh && source ~/.oh-my-zsh"
 alias nvimconfig="nvim ~/.config/nvim/init.vim && source ~./config/nvim/init.vim"
 alias todo="nvim ~/work_journal/current"
