@@ -176,4 +176,5 @@ alias tolearn="nvim ~/learning_journal/current"
 alias pwa="nvim ~/pwa/notes"
 alias scratch='nvim ~/scratch/`date +"%Y-%m-%d`.txt'
 alias gi='gi() { for arg in $@; do echo $arg >> ./.gitignore; done }; gi'
+alias repos='cd ~/repos'
 
