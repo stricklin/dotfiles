@@ -9,27 +9,23 @@ print(dotfile_dir)
 home_dir = os.path.expanduser('~')
 print(home_dir)
 
-# Set lists of (src, dest) for symlinks and hardlink
-TODO: make a function that does both types of links
-symlinks = [
-        {'link_type': 'sym', 'src': f'{dotfile_dir}/vimrc', 'dest': f'{home_dir}/.config/nvim/init.vim'}
-]
-hardlinks= [
-        {'link_type': 'hard', 'src': f'{dotfile_dir}/gitconfig', 'dest': f'{home_dir}/.gitconfig'},
-    {'link_type': 'hard', 'src': f'{dotfile_dir}/zshrc', 'dest': f'{home_dir}/.zshrc'}
-]
-for symlink in symlinks:
+links = [
+        ('symlink', f'{dotfile_dir}/vimrc', f'{home_dir}/.config/nvim/init.vim'},
+        ('hardlink', f'{dotfile_dir}/gitconfig', f'{home_dir}/.gitconfig'},
+        ('hardlink', f'{dotfile_dir}/zshrc', f'{home_dir}/.zshrc'}
+        ]
+for 
+
+def make_link(link_type, src, dest):
+
     try:
         # Remove the old file if it is there
-        os.remove(symlink['dest'])
+        os.remove(dest)
     except:
         pass
-    os.symlink(symlink['src'], symlink['dest'])
-    print (f"symlink created: {symlink['dest']}")
-for hardlink in hardlinks:
-    try:
-        os.remove(hardlink['dest'])
-    except:
-        pass
-    os.link(hardlink['src'], hardlink['dest'])
-    print (f"hardlink created: {hardlink['dest']}")
+    if link_type is 'symlink':
+        os.symlink(src, dest)
+    else:
+        os.link(src, dest)
+    print (f'{link_type} created: {dest}')
+
