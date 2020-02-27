@@ -1,4 +1,8 @@
 # common aliases
+#TODO THIS IS WHERE YOU LEFT OFF, this line ^ needs work
+alias ohmyzsh="vim ~/.oh-my-zsh && source ~/.oh-my-zsh"
+alias todo="vim ~/work_journal/current"
+alias tolearn="vim ~/learning_journal/current"
 
 ## listing
 alias ll='ls -lah --color=auto'
@@ -54,8 +58,8 @@ alias weather="curl http://wttr.in/portland"
 alias dropboxstatus="sudo docker exec -it dropbox /bin/bash -c \"dropbox status\""
 
 ## programming
-alias cdc="cd ~/src/github/toozej/ && ls"
-alias cdd="cd ~/src/healthsparq/ && ls"
+alias cdc="cd ~/src/github/stricklin/ && ls"
+alias cdd="cd ~/src/jama/ && ls"
 alias cdt="cd ~/Documents/Ops/Tickets/ && ls"
 
 ### git functions and aliases
@@ -64,3 +68,5 @@ alias gs="git status"
 alias gmp="git checkout master && git pull"
 alias gd="git diff"
 alias gforce="git commit -a --amend --no-edit && git push --force"
+alias gi='gi() { for arg in $@; do echo $arg >> ./.gitignore; done }; gi'
+alias zshconfig="cd $CONFIG_DIR && vim ./zshrc && source ./zshrc && gp && cp ./zshrc ~/.zshrc"

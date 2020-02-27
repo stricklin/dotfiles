@@ -1,8 +1,8 @@
 [user]
 	name = Rubin Stricklin
-	email = rubin.stricklin@healthsparq.com
+	email = rubin.stricklin@gmail.com
 [core]
-	editor = nvim
+	editor = vim
 [color]
 	ui = always
 [alias]
