@@ -1,0 +1,66 @@
+# common aliases
+
+## listing
+alias ll='ls -lah --color=auto'
+alias sl='ls'
+alias lsl='ls -lah | less'
+alias lsg='ls -lah --color=auto | grep -i'
+alias lst="find . -type d -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+## moving in directories
+alias b="cd ../"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+## file copy/move
+alias cpp="rsync --partial --progress --append --rsh=ssh -r -h "
+alias mvp="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
+
+## network
+alias whatismyip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias ssht='ssh -At -t conman ssh -A'
+alias sship='ssh -A -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -l james'
+
+## syslog
+alias tacg='tac /var/log/syslog | grep -i'
+alias tg='tail -f /var/log/syslog | grep -i'
+
+## package management
+alias sag="sudo apt "
+alias saguu="sudo apt update; sudo apt upgrade -y; sudo apt-get autoremove -y;"
+alias syu="sudo yum upgrade -y"
+alias syi="sudo yum install "
+alias sys="sudo yum search "
+
+## vim
+alias scratch="vim +startinsert ~/tmp/scratch"
+alias vimn='vim -u NONE'
+
+## vagrant
+alias vdf="vagrant destroy -f"
+alias vdfu="vagrant destroy -f && vagrant up"
+
+## terraform
+alias tf='terraform'
+
+## misc
+alias :q="exit"
+alias c="clear"
+alias duh="du -h --max-depth=1 | sort -n"
+alias weather="curl http://wttr.in/portland"
+alias dropboxstatus="sudo docker exec -it dropbox /bin/bash -c \"dropbox status\""
+
+## programming
+alias cdc="cd ~/src/github/toozej/ && ls"
+alias cdd="cd ~/src/healthsparq/ && ls"
+alias cdt="cd ~/Documents/Ops/Tickets/ && ls"
+
+### git functions and aliases
+alias cleanbranches="git branch --merge | egrep -v '\''(^\*|master)'\'' | xargs git branch -d"
+alias gs="git status"
+alias gmp="git checkout master && git pull"
+alias gd="git diff"
+alias gforce="git commit -a --amend --no-edit && git push --force"
