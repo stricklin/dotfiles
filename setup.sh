@@ -6,8 +6,8 @@ DIR="$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd  )"
 echo -e "installing common dotfiles\n"
 for item in `ls -a $DIR/common/`
 do
-    echo $item
-    ln -snf $DIR/common/$item ~
+   echo $item
+   ln -snf $DIR/common/$item ~
 done
 
 # clone and install vimfiles
@@ -20,16 +20,16 @@ vim +PlugInstall +qall
 
 echo -e "determining OS and distro, then installing related dotfiles\n"
 if [ "$(uname)" == "Darwin" ]; then
-    # ensure .oh-my-zsh is installed
-    if [[ ! -d "~/.oh-my-zsh" ]]; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+   # ensure .oh-my-zsh is installed
+   if [[ ! -d "~/.oh-my-zsh" ]]; then
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
         # install powerline patched fonts for use in iTerm
         sh -c "$(git clone https://github.com/powerline/fonts.git --depth=1 ~/dotfiles/mac/fonts)"
         sh -c "$(~/dotfiles/mac/fonts/install.sh && rm -rf ~/dotfiles/mac/fonts/)"
-    fi
+   fi
 
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
     # copy karabiner config in place since the symlink gets overwritten when opening Karabiner-Elements 
     cp $DIR/mac/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
@@ -38,9 +38,17 @@ if [ "$(uname)" == "Darwin" ]; then
     echo -e "installing dotfiles for MacOS"
     for item in `ls -a $DIR/mac/`
     do
-        echo $item
-        ln -snf $DIR/mac/$item ~
+       echo $item
+       ln -snf $DIR/mac/$item ~
     done
+
+    # install homebrew and homebrew managed stuff
+    if [ ! -e /usr/local/bin/brew ]; then
+       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    if [ ! -e /usr/local/bin/mvn ]; then
+       brew install maven
+    fi
 
 fi
 

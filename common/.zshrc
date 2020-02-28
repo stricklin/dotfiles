@@ -4,13 +4,17 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Path for Go
+# ENV for Go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/src/go
 
-# Path for maven
+# ENV for maven
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+export MAVEN_OPTS="-Xmx1024m"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.6+10/Contents/Home
+export M2_HOME=/usr/local/Cellar/maven/3.6.3_1
+export PATH=$PATH:/usr/local/Cellar/maven/3.6.3_1/bin
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
