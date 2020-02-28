@@ -46,8 +46,13 @@ if [ "$(uname)" == "Darwin" ]; then
     if [ ! -e /usr/local/bin/brew ]; then
        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
+
     if [ ! -e /usr/local/bin/mvn ]; then
        brew install maven
+    fi
+    
+    if [ ! -e /usr/local/bin/npm ]; then
+       brew install npm
     fi
 
 fi
