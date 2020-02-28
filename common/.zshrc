@@ -8,6 +8,10 @@ export ZSH=$HOME/.oh-my-zsh
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/src/go
 
+# Path for maven
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -73,9 +77,6 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -121,7 +122,21 @@ if [ "$(which docker)" = "/usr/bin/docker" ]; then
     fi
 fi
 
-# turn on highlighting
+# set up pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# set up secrets
+if [ $HOME/.secrets_setup ]; then
+   source $HOME/.secrets_setup
+fi
+
+
+# turn on highlighting (needs to go last?)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # turn off username in prompt (for agnoster)
 prompt_context(){}
+
