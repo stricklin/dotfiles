@@ -60,7 +60,9 @@ if [ "$(uname)" == "Darwin" ]; then
        ln /usr/local/bin/python3 /usr/local/bin/python
        ln /usr/local/bin/pip3 /usr/local/bin/pip
        pip install virtualenvwrapper
+       pip install magic-wormhole
     fi
+    
 
 
 fi
