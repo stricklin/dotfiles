@@ -54,6 +54,14 @@ if [ "$(uname)" == "Darwin" ]; then
     if [ ! -e /usr/local/bin/npm ]; then
        brew install npm
     fi
+    
+    if [ ! -e /usr/local/bin/python3 ]; then
+       brew install python3
+       ln /usr/local/bin/python3 /usr/local/bin/python
+       ln /usr/local/bin/pip3 /usr/local/bin/pip
+       pip install virtualenvwrapper
+    fi
+
 
 fi
 
