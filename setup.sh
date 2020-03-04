@@ -59,8 +59,7 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
        ln /usr/local/bin/pip3 /usr/local/bin/pip
-       pip install virtualenvwrapper
-       pip install magic-wormhole
+       pip install virtualenvwrapper magic-wormhole awscli
     fi
     
 
