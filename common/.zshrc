@@ -126,6 +126,10 @@ if [ "$(which docker)" = "/usr/bin/docker" ]; then
     fi
 fi
 
+# virtualenvwrapper
+export WORKON_HOME=~/Envs
+source /usr/local/bin/virtualenvwrapper.sh
+
 # set up secrets
 if [ $HOME/.secrets_setup ]; then
    source $HOME/.secrets_setup

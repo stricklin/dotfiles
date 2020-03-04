@@ -64,6 +64,4 @@ alias co='git checkout'
 
 ## Provisimus
 alias pro="provisimus"
-alias pro-qa="provisimus --aws-profile jama-qa""
-
-
+alias pro-qa="provisimus --aws-profile jama-qa"
