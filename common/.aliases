@@ -69,4 +69,4 @@ alias gmp="git checkout master && git pull"
 alias gd="git diff"
 alias gforce="git commit -a --amend --no-edit && git push --force"
 alias gi='gi() { for arg in $@; do echo $arg >> ./.gitignore; done }; gi'
-alias zshconfig="cd $CONFIG_DIR && vim ./zshrc && source ./zshrc && gp && cp ./zshrc ~/.zshrc"
+alias co='git checkout'
