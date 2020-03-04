@@ -62,6 +62,10 @@ if [ "$(uname)" == "Darwin" ]; then
        pip install virtualenvwrapper magic-wormhole awscli
     fi
     
+    if [ ! -e /usr/local/bin/watch ]; then
+       brew install watch
+    fi
+    
 
 
 fi
