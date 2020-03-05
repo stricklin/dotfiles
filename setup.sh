@@ -12,7 +12,12 @@ done
 
 # clone and install vimfiles
 echo -e "installing vimfiles\n"
-git clone https://github.com/stricklin/vimfiles.git ~/.vim
+if [ ! -e ~/.vim ]
+then
+   git clone https://github.com/stricklin/vimfiles.git ~/.vim
+else
+   cd ~./vim && git pull && cd $DIR
+fi
 ln -s ~/.vim/vimrc ~/.vimrc
 # Pull most recent version of vim-plug plugin manager
 curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > ~/.vim/autoload/plug.vim
@@ -50,22 +55,22 @@ if [ "$(uname)" == "Darwin" ]; then
     if [ ! -e /usr/local/bin/mvn ]; then
        brew install maven
     fi
-    
+
     if [ ! -e /usr/local/bin/npm ]; then
        brew install npm
     fi
-    
+
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
        ln /usr/local/bin/pip3 /usr/local/bin/pip
        pip install virtualenvwrapper magic-wormhole awscli
     fi
-    
+
     if [ ! -e /usr/local/bin/watch ]; then
        brew install watch
     fi
-    
+
 
 
 fi
