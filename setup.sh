@@ -60,6 +60,10 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install npm
     fi
 
+    if [ ! -e /usr/local/bin/mosh]; then
+       brew install mosh
+    fi
+
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
