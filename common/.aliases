@@ -12,6 +12,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias src="cd ~/src/"
+alias ops="cd ~/src/ops/"
+alias personal="cd ~/src/personal/"
+alias dotfiles="cd ~/dotfiles/"
 
 ## file copy/move
 alias cpp="rsync --partial --progress --append --rsh=ssh -r -h "
