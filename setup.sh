@@ -12,6 +12,14 @@ do
    ln -snf $DIR/common/$item ~
 done
 
+# symlink files from within ./bin into their correct places within /usr/local/bin
+echo -e "installing binaries\n"
+for item in `ls -a $DIR/bin/`
+do
+   echo $item
+   ln -snf $DIR/bin/$item /usr/local/bin/
+done
+
 # clone and install vimfiles
 echo -e "installing vimfiles\n"
 if [ ! -e ~/.vim ]
@@ -62,7 +70,7 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install npm
     fi
 
-    if [ ! -e /usr/local/bin/mosh]; then
+    if [ ! -e /usr/local/bin/mosh ]; then
        brew install mosh
     fi
 

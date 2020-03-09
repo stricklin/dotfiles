@@ -65,3 +65,6 @@ alias co='git checkout'
 ## Provisimus
 alias pro="provisimus"
 alias pro-qa="provisimus --aws-profile jama-qa"
+
+## Hoipolloi
+alias hoi='hoipolloi.py client --servername pit'
