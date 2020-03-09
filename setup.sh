@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set x
+set -x
 
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd  )"
 
@@ -10,6 +10,7 @@ for item in `ls -a $DIR/common/`
 do
    echo $item
    ln -snf $DIR/common/$item ~
+   source ~/$item
 done
 
 # symlink files from within ./bin into their correct places within /usr/local/bin
@@ -17,7 +18,7 @@ echo -e "installing binaries\n"
 for item in `ls -a $DIR/bin/`
 do
    echo $item
-   ln -snf $DIR/bin/$item /usr/local/bin/
+   ln -snf $DIR/bin/$item /usr/local/bin
 done
 
 # clone and install vimfiles
