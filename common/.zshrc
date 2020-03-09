@@ -74,7 +74,6 @@ plugins=(
   git
   zsh-syntax-highlighting
   history-substring-search
-  #kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,8 +106,6 @@ export PATH="/usr/local/bin:$PATH"
 # Set config dir
 export CONFIG_DIR="~/dotfiles"
 
-# Set LANG
-export LANG=en_US
 
 
 if [ -f ~/.aliases ]; then

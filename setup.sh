@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set x
+
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd  )"
 
 # symlink files from within ./common into their correct places within ~/
@@ -16,7 +18,7 @@ if [ ! -e ~/.vim ]
 then
    git clone https://github.com/stricklin/vimfiles.git ~/.vim
 else
-   cd ~./vim && git pull && cd $DIR
+   cd ~/.vim && git pull && cd $DIR
 fi
 ln -s ~/.vim/vimrc ~/.vimrc
 # Pull most recent version of vim-plug plugin manager
