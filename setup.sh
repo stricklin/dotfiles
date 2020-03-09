@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd  )"
 
 # symlink files from within ./common into their correct places within ~/
