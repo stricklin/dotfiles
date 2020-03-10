@@ -72,15 +72,19 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install mosh
     fi
 
+    if [ ! -e /usr/local/bin/watch ]; then
+       brew install watch
+    fi
+
+    if [ ! -e /usr/local/bin/tree ]; then
+       brew install tree
+    fi
+
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
        ln /usr/local/bin/pip3 /usr/local/bin/pip
        pip install virtualenvwrapper magic-wormhole awscli black isort flake8
-    fi
-
-    if [ ! -e /usr/local/bin/watch ]; then
-       brew install watch
     fi
 
 
