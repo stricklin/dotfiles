@@ -128,7 +128,7 @@ export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # set up secrets
-if [ $HOME/.secrets_setup ]; then
+if [ ! -e $HOME/.secrets_setup ]; then
    source $HOME/.secrets_setup
 fi
 
