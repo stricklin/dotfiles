@@ -8,7 +8,6 @@ for item in `ls -a $DIR/common/`
 do
    echo $item
    ln -snf $DIR/common/$item ~
-   source ~/$item
 done
 
 # symlink files from within ./bin into their correct places within /usr/local/bin
