@@ -80,6 +80,10 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install tree
     fi
 
+    if [ ! -e /usr/local/bin/gpg ]; then
+       brew install gpg
+    fi
+
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
