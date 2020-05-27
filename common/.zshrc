@@ -128,7 +128,7 @@ export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # set up secrets
-if [ ! -e $HOME/.secrets_setup ]; then
+if [ -e $HOME/.secrets_setup ]; then
    source $HOME/.secrets_setup
 fi
 
@@ -137,4 +137,3 @@ fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # turn off username in prompt (for agnoster)
 prompt_context(){}
-
