@@ -77,3 +77,6 @@ alias hoi='hoipolloi.py client --servername pit'
 alias consul_tunnel_prod="ssh -L 8500:localhost:8500 admin.kitchensink.jama"
 alias consul_tunnel_qa="ssh -L 8501:localhost:8500 engadmin.kitchensink.jama"
 alias add_keys="ssh-add -K ~/.ssh/work_rsa ~/.ssh/bootstrap.pem ~/.ssh/bootstrap-qa.pem"
+
+## unfuck vpn
+alias vpn-route="sudo route change default $(netstat -rn | grep -m 1 gpd0 | awk '{print $2}')"
