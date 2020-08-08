@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -124,8 +124,8 @@ if [ "$(which docker)" = "/usr/bin/docker" ]; then
 fi
 
 # virtualenvwrapper
-export WORKON_HOME=~/Envs
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/Envs
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # set up secrets
 if [ -e $HOME/.secrets_setup ]; then

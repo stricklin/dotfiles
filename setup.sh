@@ -57,7 +57,7 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # install homebrew and homebrew managed stuff
     if [ ! -e /usr/local/bin/brew ]; then
-       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
 
     if [ ! -e /usr/local/bin/mvn ]; then
@@ -83,6 +83,11 @@ if [ "$(uname)" == "Darwin" ]; then
     if [ ! -e /usr/local/bin/gpg ]; then
        brew install gpg
     fi
+
+    if [ ! -e /usr/local/share/zsh-syntax-highlighting ]; then
+       brew install zsh-syntax-highlighting
+    fi
+
 
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
