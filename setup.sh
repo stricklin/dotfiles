@@ -88,12 +88,14 @@ if [ "$(uname)" == "Darwin" ]; then
        brew install zsh-syntax-highlighting
     fi
 
+    if [ ! -e /usr/local/Cellar/magic-wormhole ]; then
+       brew install magic-wormhole
 
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
        ln /usr/local/bin/python3 /usr/local/bin/python
        ln /usr/local/bin/pip3 /usr/local/bin/pip
-       pip install virtualenvwrapper magic-wormhole awscli black isort flake8
+       pip install virtualenvwrapper magic-wormhole awscli black isort flake8 pipenv
     fi
 
 
