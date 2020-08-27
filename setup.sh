@@ -90,6 +90,7 @@ if [ "$(uname)" == "Darwin" ]; then
 
     if [ ! -e /usr/local/Cellar/magic-wormhole ]; then
        brew install magic-wormhole
+    fi
 
     if [ ! -e /usr/local/bin/python3 ]; then
        brew install python3
@@ -105,3 +106,4 @@ fi
 # reminders
 echo -e "\nDon't forget to set secret things in the following files:"
 echo -e "~/.ssh/config\n"
+

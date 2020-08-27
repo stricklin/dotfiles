@@ -74,9 +74,8 @@ alias pro-qa="provisimus --aws-profile jama-qa"
 alias hoi='hoipolloi.py client --servername pit'
 
 ## ssh
-alias consul_tunnel_prod="ssh -L 8500:localhost:8500 admin.kitchensink.jama"
-alias consul_tunnel_qa="ssh -L 8501:localhost:8500 engadmin.kitchensink.jama"
 alias add_keys="ssh-add -K ~/.ssh/work_rsa ~/.ssh/bootstrap.pem ~/.ssh/bootstrap-qa.pem"
+alias tunnel-bear="tunnel open or1.kitchensink.jama 8501 8500;tunnel open or2.kitchensink.jama 8502 8500;tunnel open or3.kitchensink.jama 8503 8500;tunnel open or4.kitchensink.jama 8504 8500;tunnel open eu1.kitchensink.jama 8505 8500;tunnel open au1.kitchensink.jama 8506 8500;tunnel open eng1.kitchensink.jama 8507 8500;tunnel open eng2.kitchensink.jama 8508 8500"
 
 ## unfuck vpn
 alias vpn-route="sudo route change default $(netstat -rn | grep -m 1 gpd0 | awk '{print $2}')"

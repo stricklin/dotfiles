@@ -16,6 +16,9 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.6+10/Contents/Home
 export M2_HOME=/usr/local/Cellar/maven/3.6.3_1
 export PATH=$PATH:/usr/local/Cellar/maven/3.6.3_1/bin
 
+# ENV for tunnel
+export PATH="/Users/rstricklin/src/ops/utils/misc:$PATH"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
