@@ -1,23 +1,43 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Set Path
+export PATH="/usr/local/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # ENV for Go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=$HOME/src/go
+export GOPATH="/Users/rstricklin/src/go"
+export GOBIN="/Users/rstricklin/src/go/bin"
+export PATH=$PATH:$GOBIN
 
-# ENV for maven
+# ENV for Java & Maven
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 export MAVEN_OPTS="-Xmx1024m"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.6+10/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.8+10-jre/Contents/Home
+export PATH=$PATH:$JAVA_HOME
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+alias jlink=/Library/Java/JavaVirtualMachines/jdk-11.0.8+10-jre/Contents/Home/bin/jlink
+
 export M2_HOME=/usr/local/Cellar/maven/3.6.3_1
 export PATH=$PATH:/usr/local/Cellar/maven/3.6.3_1/bin
 
 # ENV for tunnel
-export PATH="/Users/rstricklin/src/ops/utils/misc:$PATH"
+export PATH="/Users/rstricklin/src/utils/misc:$PATH"
+
+# python virtual envs and installs
+# --------------------------------
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv virtualenv-init -)"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -102,14 +122,8 @@ function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
 }
 
-
-# Set Path
-export PATH="/usr/local/bin:$PATH"
-
 # Set config dir
 export CONFIG_DIR="~/dotfiles"
-
-
 
 if [ -f ~/.aliases ]; then
     . ~/.aliases
@@ -126,9 +140,6 @@ if [ "$(which docker)" = "/usr/bin/docker" ]; then
     fi
 fi
 
-# virtualenvwrapper
-#export WORKON_HOME=~/Envs
-#source /usr/local/bin/virtualenvwrapper.sh
 
 # set up secrets
 if [ -e $HOME/.secrets_setup ]; then
