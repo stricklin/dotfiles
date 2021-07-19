@@ -131,12 +131,6 @@ PATH=$PATH:/sbin/:$HOME/bin/
 export GOPATH=$HOME/src/go/
 export EDITOR="vim"
 
-# git settings
-GIT_COMMITER_NAME="toozej"
-GIT_COMMITER_EMAIL="toozej@gmail.com"
-GIT_AUTHOR_NAME="James Tooze"
-GIT_AUTHOR_EMAIL="toozej@gmail.com"
-
 # systemD settings
 export SYSTEMD_PAGER=''
 
@@ -147,19 +141,3 @@ fi
 if [ -f ~/.functions ]; then
     . ~/.functions
 fi
-
-# docker-related/required aliases
-if [ "$(which docker)" == "/usr/bin/docker" ]; then
-    # source docker aliases
-    if [ -f ~/.aliases_docker ]; then
-        . ~/.aliases_docker
-    fi
-
-    # source kcli aliases
-    if [ -f ~/.aliases_kcli ]; then
-        . ~/.aliases_kcli
-    fi
-fi
-#if [ -f ~/.aliases_elasticsearch ]; then
-#    . ~/.aliases_elasticsearch
-#fi
