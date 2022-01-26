@@ -26,7 +26,6 @@ alias whatismyip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 ## syslog
 alias tacg='tac /var/log/syslog | grep -i'
-alias tg='tail -f /var/log/syslog | grep -i'
 
 ## package management
 alias sag="sudo apt "
@@ -39,25 +38,17 @@ alias sys="sudo yum search "
 alias scratch="vim +startinsert ~/tmp/scratch"
 alias vimn='vim -u NONE'
 
-## vagrant
-alias vdf="vagrant destroy -f"
-alias vdfu="vagrant destroy -f && vagrant up"
-
 ## terraform
 alias tf='terraform'
+alias tg='terragrunt'
 
 ## misc
 alias :q="exit"
 alias c="clear"
 alias duh="du -h --max-depth=1 | sort -n"
 alias weather="curl http://wttr.in/portland"
-alias dropboxstatus="sudo docker exec -it dropbox /bin/bash -c \"dropbox status\""
 
-## programming
-alias cdc="cd ~/src/github/stricklin/ && ls"
-alias cdd="cd ~/src/ops/ && ls"
-
-### git functions and aliases
+## git functions and aliases
 alias cleanbranches="git branch --merge | egrep -v '\''(^\*|master)'\'' | xargs git branch -d"
 alias gs="git status"
 alias gmp="git checkout master && git pull"
@@ -65,7 +56,9 @@ alias gd="git diff"
 alias gforce="git commit -a --amend --no-edit && git push --force"
 alias gi='gi() { for arg in $@; do echo $arg >> ./.gitignore; done }; gi'
 alias co='git checkout'
+alias gwip='git commit -m "wip"'
+alias gwipp='git commit -m "wip" && git push'
+alias ga='git commit --amend --no-edit'
 
-## consul
-function consul-get() { ssh $1.kitchensink.jama sudo docker exec consul-agent consul kv get -recurse $2 2>/dev/null }
-function consul-put() { ssh $1.kitchensink.jama sudo docker exec consul-agent consul kv put $2 $3 2>/dev/null } 
+## VS code workaround
+alias code="/mnt/c/Users/RubinStricklin/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
