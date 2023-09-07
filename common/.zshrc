@@ -20,8 +20,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv virtualenv-init -)"
-#eval "$(pyenv init -)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
@@ -146,6 +146,6 @@ export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 
 # turn on highlighting (needs to go last?)
-source /home/rstricklin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/rubin.stricklin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # turn off username in prompt (for agnoster)
 prompt_context(){}
