@@ -93,22 +93,6 @@ export EDITOR='vim'
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# turn on vim emulation
-bindkey -v
-bindkey "^R" history-incremental-search-backward
-export KEYTIMEOUT=1
-# Updates editor information when the keymap changes.
-function zle-keymap-select() {
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-keymap-select
-
-function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
-}
-
 # Set config dir
 export CONFIG_DIR="~/dotfiles"
 
