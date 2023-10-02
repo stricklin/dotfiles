@@ -61,4 +61,4 @@ alias gwipp='git commit -m "wip" && git push'
 alias ga='git commit --amend --no-edit'
 
 ## VS code workaround
-alias code="/mnt/c/Users/RubinStricklin/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+#alias code="/mnt/c/Users/RubinStricklin/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
