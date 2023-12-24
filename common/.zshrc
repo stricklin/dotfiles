@@ -8,8 +8,8 @@ export PATH="/usr/local/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 # ENV for Go
-export GOPATH="/Users/rstricklin/src/go"
-export GOBIN="/Users/rstricklin/src/go/bin"
+export GOPATH="/Users/rubinstricklin/code/go"
+export GOBIN="/Users/rubinstricklin/code/go/bin"
 export PATH=$PATH:$GOBIN
 
 # ENV for Java & Maven
@@ -23,9 +23,6 @@ alias jlink=/Library/Java/JavaVirtualMachines/jdk-11.0.8+10-jre/Contents/Home/bi
 
 export M2_HOME=/usr/local/Cellar/maven/3.6.3_1
 export PATH=$PATH:/usr/local/Cellar/maven/3.6.3_1/bin
-
-# ENV for tunnel
-export PATH="/Users/rstricklin/src/utils/misc:$PATH"
 
 # python virtual envs and installs
 # --------------------------------
