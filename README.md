@@ -6,4 +6,4 @@ This also installs [my vimfiles](github.com/stricklin/vimfiles)
 
 Installation
 ============
-`git clone https://github.com/stricklin/dotfiles && ~/dotfiles/setup.sh`
+`git clone git@github.com:stricklin/dotfiles.git && ~/dotfiles/setup.sh`

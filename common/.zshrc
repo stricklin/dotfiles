@@ -1,8 +1,8 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Set Path
 export PATH="/usr/local/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+export PATH=$(pyenv root)/shims:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -12,17 +12,6 @@ export GOPATH="/Users/rubinstricklin/code/go"
 export GOBIN="/Users/rubinstricklin/code/go/bin"
 export PATH=$PATH:$GOBIN
 
-# ENV for Java & Maven
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export CPPFLAGS="-I/usr/local/opt/openjdk/include"
-export MAVEN_OPTS="-Xmx1024m"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.8+10-jre/Contents/Home
-export PATH=$PATH:$JAVA_HOME
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-alias jlink=/Library/Java/JavaVirtualMachines/jdk-11.0.8+10-jre/Contents/Home/bin/jlink
-
-export M2_HOME=/usr/local/Cellar/maven/3.6.3_1
-export PATH=$PATH:/usr/local/Cellar/maven/3.6.3_1/bin
 
 # python virtual envs and installs
 # --------------------------------
@@ -31,7 +20,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv virtualenv-init -)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
@@ -103,22 +93,6 @@ export EDITOR='vim'
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# turn on vim emulation
-bindkey -v
-bindkey "^R" history-incremental-search-backward
-export KEYTIMEOUT=1
-# Updates editor information when the keymap changes.
-function zle-keymap-select() {
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-keymap-select
-
-function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
-}
-
 # Set config dir
 export CONFIG_DIR="~/dotfiles"
 
@@ -127,6 +101,9 @@ if [ -f ~/.aliases ]; then
 fi
 if [ -f ~/.functions ]; then
     . ~/.functions
+fi
+if [ -f ~/.secrets ]; then
+    . ~/.secrets
 fi
 
 # docker-related/required aliases
@@ -143,8 +120,16 @@ if [ -e $HOME/.secrets_setup ]; then
    source $HOME/.secrets_setup
 fi
 
+EDITOR=vim
+PATH=$PATH:/sbin/:$HOME/bin/
+export GOPATH=$HOME/src/go/
+export EDITOR="vim"
+
+# History management.
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
 
 # turn on highlighting (needs to go last?)
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/rubin.stricklin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # turn off username in prompt (for agnoster)
 prompt_context(){}
