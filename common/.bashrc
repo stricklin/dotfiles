@@ -141,3 +141,5 @@ fi
 if [ -f ~/.functions ]; then
     . ~/.functions
 fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Set Path
 export PATH="/usr/local/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
@@ -29,7 +36,10 @@ export PATH="/usr/local/bin:$PATH"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+# turn off username in prompt (for agnoster)
+#prompt_context(){}
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -129,7 +139,10 @@ export EDITOR="vim"
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 
-# turn on highlighting (needs to go last?)
-source /Users/rubin.stricklin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# turn off username in prompt (for agnoster)
-prompt_context(){}
+# turn on highlighting (needs to be last)
+source /home/rubin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
