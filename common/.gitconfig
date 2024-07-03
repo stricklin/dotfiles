@@ -1,6 +1,6 @@
 [user]
 	name = Rubin Stricklin
-	email = rstricklin@opensesame.com
+	email = rubin.stricklin@gmail.com
 [core]
 	editor = vim
 [color]
@@ -18,3 +18,5 @@
 	trustExitCode = true
 [push]
 	default = current
+[init]
+	defaultBranch = main

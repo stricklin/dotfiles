@@ -7,17 +7,17 @@ fi
 
 # Set Path
 export PATH="/usr/local/bin:$PATH"
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+if [ "$(which brew)" ]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+fi
 export PATH=$(pyenv root)/shims:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # ENV for Go
-export GOPATH="/Users/rubinstricklin/code/go"
-export GOBIN="/Users/rubinstricklin/code/go/bin"
-export PATH=$PATH:$GOBIN
+export GOBIN="~/code/go/bin"
 
 
 # python virtual envs and installs
@@ -81,7 +81,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -132,17 +132,19 @@ fi
 
 EDITOR=vim
 PATH=$PATH:/sbin/:$HOME/bin/
-export GOPATH=$HOME/src/go/
+export PATH=$PATH:/usr/local/go/bin
 export EDITOR="vim"
 
 # History management.
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 
-# turn on highlighting (needs to be last)
-source /home/rubin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# turn on highlighting (needs to be last)
+source /home/rubin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
