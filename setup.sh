@@ -65,6 +65,7 @@ if which apt; then
             wget "https://go.dev/dl/go1.22.5.linux-amd64.tar.gz"
             rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
          fi
+         curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.59.1
       fi
 
 

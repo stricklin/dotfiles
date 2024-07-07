@@ -17,7 +17,7 @@ export PATH=$(pyenv root)/shims:$PATH
 export ZSH=$HOME/.oh-my-zsh
 
 # ENV for Go
-export GOBIN="~/code/go/bin"
+export GOBIN="$HOME/go/bin"
 
 
 # python virtual envs and installs
@@ -94,6 +94,7 @@ plugins=(
   git
   zsh-syntax-highlighting
   history-substring-search
+  exercism
 )
 
 source $ZSH/oh-my-zsh.sh
