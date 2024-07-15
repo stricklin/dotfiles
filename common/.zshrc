@@ -101,6 +101,12 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+# functions
+
+open_exercism() {
+   exercism download --track=go --exercise="$1" || cd ~/exercism/go/"$1" && code . "$1".go README.md
+}
+
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
