@@ -19,7 +19,7 @@ if which apt; then
       IS_ARM="$(dpkg --print-architecture | grep arm | wc -l)"
 
       if [ ! "$(which zsh)" ]; then
-         sudo apt install zsh -y
+         sudo apt install zsh gh unzip -y
       fi
       
       # Ensure .oh-my-zsh is installed
@@ -27,6 +27,7 @@ if which apt; then
             sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
             git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+            https://github.com/fabiokiatkowski/exercism.plugin.zsh.git
       fi
 
       if [ ! "$(which npm)" ]; then
