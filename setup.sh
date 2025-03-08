@@ -57,6 +57,10 @@ if which apt; then
          pip install pre-commit
       fi
 
+      if [ ! "$(xclip)" ]; then
+         sudp apt install xclip
+      fi
+
       if [ ! "$(which go)" ]; then
          # WARNING: if installing over old go, delete old go first
          if [ $IS_ARM -eq 1 ]; then

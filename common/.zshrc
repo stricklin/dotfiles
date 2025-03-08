@@ -11,6 +11,8 @@ if [ "$(which brew)" ]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 fi
+export PATH="/snap/bin:$PATH"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -94,7 +96,6 @@ plugins=(
   git
   zsh-syntax-highlighting
   history-substring-search
-  exercism
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -149,9 +150,13 @@ export HISTFILESIZE=100000               # big big history
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+#if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#fi
 
 # turn on highlighting (needs to be last)
-source /home/rubin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
