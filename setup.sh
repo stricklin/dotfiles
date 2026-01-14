@@ -52,13 +52,14 @@ if which apt; then
          unzip awscliv2.zip
          sudo ./aws/install
       fi
-
       if [ ! "$(which pre-commit)" ]; then
          pip install pre-commit
       fi
-
       if [ ! "$(xclip)" ]; then
-         sudp apt install xclip
+         sudo apt install xclip
+      fi
+      if [ ! "$(unzip)" ]; then
+         sudo apt install unzip
       fi
 
       if [ ! "$(which go)" ]; then
