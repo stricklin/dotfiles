@@ -1,0 +1,52 @@
+FROM debian:bookworm-slim
+
+# Install minimal dependencies needed to run chezmoi and setup scripts
+# Includes Python build dependencies for pyenv
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    sudo \
+    wget \
+    build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libffi-dev \
+    liblzma-dev \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user with passwordless sudo
+RUN useradd -m -s /bin/bash testuser && \
+    echo "testuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Install chezmoi
+RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+
+USER testuser
+WORKDIR /home/testuser
+
+# Copy dotfiles source
+COPY --chown=testuser:testuser . dotfiles/
+
+# Link dotfiles to chezmoi's expected source location
+RUN mkdir -p /home/testuser/.local/share && \
+    ln -s /home/testuser/dotfiles /home/testuser/.local/share/chezmoi
+
+# Initialize chezmoi, providing prompted values non-interactively
+RUN chezmoi init \
+    --promptString "Git user name=Test User" \
+    --promptString "Git email=test@example.com"
+
+# Skip slow Python builds by default in tests
+ENV SKIP_PYTHON_BUILD=1
+
+# Default command runs verification
+CMD ["chezmoi", "verify"]

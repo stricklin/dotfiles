@@ -1,0 +1,22 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+
+# npm may have just been installed, ensure it's in PATH
+export PATH="/usr/bin:$PATH"
+
+if ! command -v claude &>/dev/null; then
+    echo "Installing Claude Code..."
+
+    # Check for npm
+    if ! command -v npm &>/dev/null; then
+        echo "WARNING: npm not found. Skipping Claude Code install."
+        echo "Install Node.js/npm and re-run: npm install -g @anthropic-ai/claude-code"
+        exit 0
+    fi
+
+    sudo npm install -g @anthropic-ai/claude-code
+else
+    echo "Claude Code already installed, skipping..."
+fi
+{{- end }}

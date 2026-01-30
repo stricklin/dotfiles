@@ -42,6 +42,9 @@ alias vimn='vim -u NONE'
 alias tf='terraform'
 alias tg='terragrunt'
 
+## claude
+alias yolo='claude --dangerously-skip-permissions'
+
 ## misc
 alias :q="exit"
 alias c="clear"

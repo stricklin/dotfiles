@@ -1,0 +1,9 @@
+README.md
+CLAUDE.md
+LICENSE
+Dockerfile.test
+.github/
+manual_steps.txt
+awscliv2.zip
+aws/
+setup.sh

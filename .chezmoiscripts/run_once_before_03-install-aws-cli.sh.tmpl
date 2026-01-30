@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+
+if [ ! -x /usr/local/bin/aws ]; then
+    echo "Installing AWS CLI v2..."
+    cd /tmp
+
+    {{- if eq .chezmoi.arch "arm64" }}
+    curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+    {{- else }}
+    curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    {{- end }}
+
+    unzip -q awscliv2.zip
+    sudo ./aws/install
+    rm -rf aws awscliv2.zip
+else
+    echo "AWS CLI already installed, skipping..."
+fi
+{{- end }}

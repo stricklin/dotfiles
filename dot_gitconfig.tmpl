@@ -1,6 +1,6 @@
 [user]
-	name = Rubin Stricklin
-	email = rubin.stricklin@gmail.com
+	name = {{ .name }}
+	email = {{ .email }}
 [core]
 	editor = vim
 [color]
@@ -12,7 +12,7 @@
 	lg = !"git lg1"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
