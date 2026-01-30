@@ -20,6 +20,7 @@
 - If requirements are unclear, ask ONE clarifying question, not five
 
 ## Code Quality (Non-Negotiable)
+- All code must read like a human wrote it—no obvious AI patterns, excessive comments, or over-engineered abstractions
 - TDD: tests first, always
 - 100% test coverage required
 - Coverage exceptions must be explicitly justified with a comment explaining why
@@ -36,6 +37,7 @@
 - Default branch: main
 - Never push directly to main
 - Commit messages: concise, imperative mood
+- No AI co-author attribution in commits
 
 ## Communication Style
 - CLI commands: include `--output json --no-cli-pager`, use jq for parsing
